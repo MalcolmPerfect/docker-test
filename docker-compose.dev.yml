@@ -1,0 +1,22 @@
+version: '3.11'
+
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - 8000:5000
+    volumes:
+      - ./:/app
+
+  my_postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=passw0rd
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
